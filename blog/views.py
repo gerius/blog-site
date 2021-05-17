@@ -85,7 +85,7 @@ def password_reset_request(request):
                     email_template_name = "password_reset_email.txt"
                     c = {
                         "email": user.email,
-                        'domain': 'blog-site-gerius94-dev.apps.sandbox.x8i5.p1.openshiftapps.com',
+                        'domain': 'new-blog-site-gerius94-dev.apps.sandbox.x8i5.p1.openshiftapps.com',
                         'site_name': 'Website',
                         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                         "user": user,
