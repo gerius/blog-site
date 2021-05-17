@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container" >
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+         <div class="col-md-6 bg-light">
+    <div class="post-entry">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+    </div>
+    <a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a>
+    <a href="{% url 'post_delete' post.pk %}">- Delete Blog Post</a>
+<div>
+    <a href="{% url 'comment' %}" class="btn btn-primary ml-2">Add Comment</a>
+</div>
+ <hr>
+{% for comment in post.comments.all %}
+<div>
+    <div>
+        {{comment.date}}
+    </div>
+    <strong>Author: {{comment.author}}</strong>
+    <p> {{comment.comment |linebreaks}}</p>
+    <hr>
+</div>
+{% empty %}
+<p> No comments !</p>
+             <hr>
+{% endfor %}
+             <hr>
+         </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
